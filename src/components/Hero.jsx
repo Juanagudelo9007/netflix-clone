@@ -4,6 +4,7 @@ import axios from "axios";
 
 const Hero = () => {
   const [movie, setMovie] = useState({});
+  const [readMore, setReadMore] = useState(false);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -19,7 +20,7 @@ const Hero = () => {
       }
     };
     fetchMovies();
-  }, []);
+  },[]);
 
   const { title, backdrop_path, release_date, overview } = movie;
 
@@ -32,14 +33,28 @@ const Hero = () => {
           src={`https://image.tmdb.org/t/p/original${backdrop_path}`}
           alt={title}
         />
-        <div className="absolute w-full top-[20%] lg:top-[32%]">
-          <h1>{title}</h1>
-          <div>
-            <button>Play</button>
-            <button>Watch Later</button>
-            <div>
-              <p>{release_date}</p>
-              <p>{overview}</p>
+        <div className="absolute w-[50%] top-[20%] md:top-[25%] lg:top-[35%] p-2 ">
+          <h1 className="text-3xl font-bold mb-5 md:text-4xl">{title}</h1>
+          <div className=" flex flex-col gap-3">
+            <div className="flex gap-4">
+              <button className="cursor-pointer px-4 bg-white  py-1 text-black">
+                Play
+              </button>
+              <button className=" cursor-pointer px-4 py-1 border border-white">
+                Watch Later
+              </button>
+            </div>
+            <div className="flex flex-col gap-2">
+              <p className="text-white/60">{release_date}</p>
+              <div>
+                <p className={readMore ? "" : "truncate"}>{overview}</p>
+                <button
+                  className=" mt-1 cursor-pointer "
+                  onClick={() => setReadMore(!readMore)}
+                >
+                  {!readMore ? "Read More" : "See Less"}
+                </button>
+              </div>
             </div>
           </div>
         </div>

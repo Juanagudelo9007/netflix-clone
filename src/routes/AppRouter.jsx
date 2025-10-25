@@ -9,9 +9,9 @@ const AppRouter = () => {
   return (
     <Routes>
       <Route path="home" element={<Home />} />
-      <Route path="mynetflix" element={<MyNetflix />}/>
+      <Route path="mynetflix" element={<MyNetflix />} />
       <Route path="login" element={<Login />} />
-      <Route path="register" element={<Register/>} />
+      <Route path="register" element={<Register />} />
     </Routes>
   );
 };
