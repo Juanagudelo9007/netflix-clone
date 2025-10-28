@@ -20,7 +20,7 @@ const Hero = () => {
       }
     };
     fetchMovies();
-  },[]);
+  }, []);
 
   const { title, backdrop_path, release_date, overview } = movie;
 
@@ -49,7 +49,7 @@ const Hero = () => {
               <div>
                 <p className={readMore ? "" : "truncate"}>{overview}</p>
                 <button
-                  className=" mt-1 cursor-pointer "
+                  className=" mt-1 cursor-pointer hidden md:block "
                   onClick={() => setReadMore(!readMore)}
                 >
                   {!readMore ? "Read More" : "See Less"}

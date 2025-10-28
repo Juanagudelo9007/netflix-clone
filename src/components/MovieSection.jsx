@@ -17,13 +17,13 @@ const MovieSection = ({ title, url }) => {
     loadMovies();
   }, [url]);
 
-  console.log("movies", movie);
+
 
   return (
     <>
       <h1 className="capitalize font-bebas tracking-wider p-1">{title}</h1>
       <div className=" flex items-center">
-        <div className="relative  h-full overflow-x-scroll scroll-smooth whitespace-nowrap group">
+        <div className="relative h-full overflow-auto scroll-smooth whitespace-nowrap group no-scrollbar">
           {movie.map((k) => (
             <MovieCard key={k.id} movie={k} />
           ))}
