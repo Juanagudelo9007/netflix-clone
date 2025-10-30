@@ -4,6 +4,7 @@ import MovieCard from "./MovieCard";
 import { GrPrevious } from "react-icons/gr";
 import { GrNext } from "react-icons/gr";
 import { useLocation } from "react-router-dom";
+import TvCard from "./TvCard";
 
 const MovieSection = ({ title, url }) => {
   const [movie, setMovie] = useState([]);
@@ -40,28 +41,32 @@ const MovieSection = ({ title, url }) => {
       <h1 className="capitalize font-bebas tracking-wider p-1 text-xl">
         {title}
       </h1>
-      <div className="relative flex items-center group" id="movies">
-        <button onClick={() => scrollHorizontal("left")}>
-          <GrPrevious
-            className="absolute left-2 top-16 bg-black/60 backdrop-blur-sm  block  md:hidden group-hover:md:block cursor-pointer rounded-full p-2 z-20 "
-            size={30}
-          />
-        </button>
-        <div
-          className="relative h-full overflow-x-auto scroll-smooth whitespace-nowrap group no-scrollbar w-full"
-          ref={scrollRef}
-        >
-          {movie.map((k) => (
-            <MovieCard key={k.id} movie={k} />
-          ))}
+      {location.pathname === "/home" ? (
+        <div className="relative flex items-center group" id="movies">
+          <button onClick={() => scrollHorizontal("left")}>
+            <GrPrevious
+              className="absolute left-2 top-16 bg-black/60 backdrop-blur-sm  block  md:hidden group-hover:md:block cursor-pointer rounded-full p-2 z-20 "
+              size={30}
+            />
+          </button>
+          <div
+            className="relative h-full overflow-x-auto scroll-smooth whitespace-nowrap group no-scrollbar w-full"
+            ref={scrollRef}
+          >
+            {movie.map((k) => (
+              <MovieCard key={k.id} movie={k} />
+            ))}
+          </div>
+          <button
+            className="absolute right-2 top-16 bg-black/60 backdrop-blur-sm  block md:hidden  group-hover:md:block cursor-pointer rounded-full p-2 z-20"
+            onClick={() => scrollHorizontal("right")}
+          >
+            <GrNext size={15} />
+          </button>
         </div>
-        <button
-          className="absolute right-2 top-16 bg-black/60 backdrop-blur-sm  block md:hidden  group-hover:md:block cursor-pointer rounded-full p-2 z-20"
-          onClick={() => scrollHorizontal("right")}
-        >
-          <GrNext size={15} />
-        </button>
-      </div>
+      ) : location.pathname === "/shows" ? (
+        <TvCard />
+      ) : null}
     </>
   );
 };

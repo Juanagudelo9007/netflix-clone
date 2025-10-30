@@ -25,7 +25,7 @@ const Hero = () => {
   const { title, backdrop_path, release_date, overview } = movie;
 
   return (
-    <div className="w-full h-[500px] lg:h-[600px] bg-linear-to-r from-black to-transparent">
+    <div className="w-full h-[500px] lg:h-[600px] ">
       <div className="h-full w-full ">
         <div className="absolute w-full h-[500px] lg:h-[600px] bg-linear-to-r from-black" />
         <img
@@ -40,16 +40,16 @@ const Hero = () => {
               <button className="cursor-pointer px-4 bg-white  py-1 text-black">
                 Play
               </button>
-              <button className=" cursor-pointer px-4 py-1 border border-white">
+              <button className=" cursor-pointer px-3 py-1 border border-white">
                 Watch Later
               </button>
             </div>
             <div className="flex flex-col gap-2">
-              <p className="text-white/60">{release_date}</p>
+              <h1 className="text-white/60">{release_date}</h1>
               <div>
                 <p className={readMore ? "" : "truncate"}>{overview}</p>
                 <button
-                  className=" mt-1 cursor-pointer hidden md:block "
+                  className=" mt-1 cursor-pointer hidden md:block  transition-all hover:underline"
                   onClick={() => setReadMore(!readMore)}
                 >
                   {!readMore ? "Read More" : "See Less"}
