@@ -11,6 +11,11 @@ const Navbar = () => {
           </p>
         </Link>
 
+        <div className="flex  gap-2">
+          <Link to={'/shows'}>Shows</Link>
+           <Link to={'/mynetflix'}>MyNetflix</Link>
+        </div>
+
         <div className="flex items-center gap-3">
           <Link to={"/login"}>
             <button className="cursor-pointer font-bold">Login</button>

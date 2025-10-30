@@ -3,10 +3,12 @@ import axios from "axios";
 import MovieCard from "./MovieCard";
 import { GrPrevious } from "react-icons/gr";
 import { GrNext } from "react-icons/gr";
+import { useLocation } from "react-router-dom";
 
 const MovieSection = ({ title, url }) => {
   const [movie, setMovie] = useState([]);
   const scrollRef = useRef(null);
+  const location = useLocation();
 
   useEffect(() => {
     const loadMovies = async () => {
@@ -35,11 +37,13 @@ const MovieSection = ({ title, url }) => {
 
   return (
     <>
-      <h1 className="capitalize font-bebas tracking-wider p-1">{title}</h1>
-      <div className="relative flex items-center group">
+      <h1 className="capitalize font-bebas tracking-wider p-1 text-xl">
+        {title}
+      </h1>
+      <div className="relative flex items-center group" id="movies">
         <button onClick={() => scrollHorizontal("left")}>
           <GrPrevious
-            className="absolute left-2 top-16 bg-gray-200/30 backdrop-blur-sm  hidden group-hover:block cursor-pointer rounded-full p-2 z-20"
+            className="absolute left-2 top-16 bg-black/60 backdrop-blur-sm  block  md:hidden group-hover:md:block cursor-pointer rounded-full p-2 z-20 "
             size={30}
           />
         </button>
@@ -52,7 +56,7 @@ const MovieSection = ({ title, url }) => {
           ))}
         </div>
         <button
-          className="absolute right-2 top-16 bg-gray-200/30 backdrop-blur-sm  hidden group-hover:block cursor-pointer rounded-full p-2 z-20"
+          className="absolute right-2 top-16 bg-black/60 backdrop-blur-sm  block md:hidden  group-hover:md:block cursor-pointer rounded-full p-2 z-20"
           onClick={() => scrollHorizontal("right")}
         >
           <GrNext size={15} />
