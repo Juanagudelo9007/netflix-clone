@@ -6,22 +6,41 @@ import { GrNext } from "react-icons/gr";
 import { useLocation } from "react-router-dom";
 import TvCard from "./TvCard";
 
-const MovieSection = ({ title, url }) => {
+const MovieSection = ({ title, movieUrl, tvUrl }) => {
   const [movie, setMovie] = useState([]);
+  const [tvShows, setTvShows] = useState([]);
   const scrollRef = useRef(null);
   const location = useLocation();
 
+  {
+    /* Movies  */
+  }
   useEffect(() => {
     const loadMovies = async () => {
       try {
-        const res = await axios.get(url);
+        const res = await axios.get(movieUrl);
         setMovie(res.data.results);
       } catch (error) {
         console.log("Error while fetching movies", error);
       }
     };
     loadMovies();
-  }, [url]);
+  }, [movieUrl]);
+
+  {
+    /* TV Shows */
+  }
+  useEffect(() => {
+    const loadShows = async () => {
+      try {
+        const res = await axios.get(tvUrl);
+        setTvShows(res.data.results);
+      } catch (error) {
+        console.log("Error while fetching movies", error);
+      }
+    };
+    loadShows();
+  }, [tvUrl]);
 
   {
     /* scroll x */
@@ -65,7 +84,28 @@ const MovieSection = ({ title, url }) => {
           </button>
         </div>
       ) : location.pathname === "/shows" ? (
-        <TvCard />
+        <div className="relative flex items-center group" id="shows">
+          <button onClick={() => scrollHorizontal("left")}>
+            <GrPrevious
+              className="absolute left-2 top-16 bg-black/60 backdrop-blur-sm  block  md:hidden group-hover:md:block cursor-pointer rounded-full p-2 z-20 "
+              size={30}
+            />
+          </button>
+          <div
+            className="relative h-full overflow-x-auto scroll-smooth whitespace-nowrap group no-scrollbar w-full"
+            ref={scrollRef}
+          >
+            {tvShows.map((k) => (
+              <TvCard key={k.id} shows={k} />
+            ))}
+          </div>
+          <button
+            className="absolute right-2 top-16 bg-black/60 backdrop-blur-sm  block md:hidden  group-hover:md:block cursor-pointer rounded-full p-2 z-20"
+            onClick={() => scrollHorizontal("right")}
+          >
+            <GrNext size={15} />
+          </button>
+        </div>
       ) : null}
     </>
   );

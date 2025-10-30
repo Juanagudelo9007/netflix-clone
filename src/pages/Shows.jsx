@@ -7,10 +7,9 @@ const Shows = () => {
   return (
     <>
       <ShowsHero />
-      <MovieSection title={"upcoming"} url={endpoints.tvTrending} />
-      <MovieSection />
-      <MovieSection />
-      <MovieSection />
+      <MovieSection title={"anime"} tvUrl={endpoints.tvAnime} />
+      <MovieSection title={"top rated"} tvUrl={endpoints.tvTopRated} />
+      <MovieSection title={"trending"} tvUrl={endpoints.tvTrending} />
     </>
   );
 };

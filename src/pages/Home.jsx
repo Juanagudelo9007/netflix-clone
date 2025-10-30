@@ -8,9 +8,9 @@ const Home = () => {
   return (
     <>
       <Hero />
-      <MovieSection title="upcoming" url={endpoints.upcoming} />
-      <MovieSection title="top Rated" url={endpoints.topRated} />
-      <MovieSection title="trending" url={endpoints.trending} />
+      <MovieSection title="upcoming" movieUrl={endpoints.upcoming} />
+      <MovieSection title="top Rated" movieUrl={endpoints.topRated} />
+      <MovieSection title="trending" movieUrl={endpoints.trending} />
       <DefaultMovies />
     </>
   );
