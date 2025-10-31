@@ -6,7 +6,7 @@ const Navbar = () => {
     <>
       <div className="absolute flex w-full p-4 items-center justify-between z-10">
         <Link to={"/home"}>
-          <p className="font-bebas text-2xl md:text-4xl text-red-600 font-extrabold tracking-wider">
+          <p className="font-bebas  text-2xl md:text-5xl text-red-600 font-extrabold tracking-wider">
             Netflix
           </p>
         </Link>

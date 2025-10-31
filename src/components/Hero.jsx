@@ -33,7 +33,7 @@ const Hero = () => {
           src={`https://image.tmdb.org/t/p/original${backdrop_path}`}
           alt={title}
         />
-        <div className="absolute w-[50%] top-[20%] md:top-[25%] lg:top-[35%] p-2 ">
+        <div className="absolute w-[50%] top-[20%] md:top-[23%] lg:top-[35%] p-2 ">
           <h1 className="text-3xl font-bold mb-5 md:text-4xl">{title}</h1>
           <div className=" flex flex-col gap-3">
             <div className="flex gap-4">
