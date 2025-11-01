@@ -12,7 +12,6 @@ import { doc, getFirestore, setDoc } from "firebase/firestore";
 const Register = () => {
   const [isRegistered, setIsRegistered] = useState(true);
   const [isLogged, setIsLogged] = useState(false);
-  const [error, setError] = useState("");
   const auth = getAuth(app);
   const db = getFirestore(app);
 
