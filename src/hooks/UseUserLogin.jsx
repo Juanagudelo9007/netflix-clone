@@ -1,28 +1,45 @@
-import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { app } from "../firebase/firebase";
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
 import { doc, getFirestore, setDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 export const UseUserLogin = () => {
-  const [isRegistered, setIsRegistered] = useState(true);
-  const [isLogged, setIsLogged] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(null);
   const auth = getAuth(app);
   const db = getFirestore(app);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const unSesion = onAuthStateChanged(auth, (userFirebase) => {
+      if (userFirebase) {
+        setUser(userFirebase);
+        setIsRegistered(true);
+        setIsLoggedIn(true);
+      } else {
+        setUser(null);
+        setIsRegistered(false);
+      }
+    });
+    return () => unSesion();
+  }, []);
+
   const handleForm = async (e) => {
     e.preventDefault();
-
     const email = e.target.email.value;
     const password = e.target.password.value;
     const name = e.target.name.value;
 
     try {
-      if (isRegistered) {
+      if (!isRegistered) {
         const userInfo = await createUserWithEmailAndPassword(
           auth,
           email,
@@ -34,25 +51,35 @@ export const UseUserLogin = () => {
           id: userInfo.user.uid,
           name: name,
           email: email,
-          password: password,
         });
         await setDoc(doc(db, "favorites", userInfo.user.uid), {
           movie: "movie",
         });
-        setIsRegistered(userInfo.user.uid);
+        setUser(userInfo.user);
+        navigate("/mynetflix");
       } else {
         const userSingIn = await signInWithEmailAndPassword(
           auth,
           email,
           password
         );
+
+        setUser(userSingIn.user);
+        setIsLoggedIn(true);
+        navigate("/home");
         console.log("user sign in:", userSingIn);
-        setIsLogged(userSingIn.user.uid);
       }
     } catch (error) {
       console.log("Error while register", error);
     }
   };
 
-  return {handleForm, isRegistered, setIsLogged,isLogged, setIsRegistered};
+  return {
+    handleForm,
+    isRegistered,
+    setIsRegistered,
+    user,
+    setUser,
+    isLoggedIn,
+  };
 };

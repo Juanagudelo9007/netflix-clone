@@ -5,15 +5,18 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Shows from "../pages/Shows";
+import PrivateRoutes from "./PrivateRoutes";
 
 const AppRouter = () => {
   return (
     <Routes>
       <Route path="home" element={<Home />} />
-      <Route path="mynetflix" element={<MyNetflix />} />
+      <Route path="/" element={<PrivateRoutes />}>
+        <Route path="mynetflix" element={<MyNetflix />} />
+      </Route>
       <Route path="login" element={<Login />} />
       <Route path="register" element={<Register />} />
-      <Route path="shows"  element={<Shows />} />
+      <Route path="shows" element={<Shows />} />
     </Routes>
   );
 };

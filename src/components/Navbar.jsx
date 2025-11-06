@@ -1,7 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Credentials } from "../context/UserCredentials";
+
+
+
 
 const Navbar = () => {
+const {closeSesion} = useContext(Credentials)
+
+
   return (
     <>
       <div className="absolute flex w-full p-4 items-center justify-between z-10">
@@ -26,6 +34,9 @@ const Navbar = () => {
             </button>
           </Link>
         </div>
+       <button onClick={closeSesion}
+       className="cursor-pointer"
+       >Log Out</button>
       </div>
     </>
   );

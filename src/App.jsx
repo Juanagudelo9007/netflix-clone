@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import AppRouter from "./routes/AppRouter";
+
 
 const App = () => {
   return (
