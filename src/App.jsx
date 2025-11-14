@@ -1,15 +1,12 @@
-import React, { useContext, useEffect } from "react";
-import Navbar from "./components/Navbar";
 import AppRouter from "./routes/AppRouter";
-
+import { UserLogin } from "./context/LoginContext";
+import { useContext } from "react";
+import Register from "./pages/Register";
 
 const App = () => {
-  return (
-    <>
-      <Navbar />
-      <AppRouter />
-    </>
-  );
+  const { user } = useContext(UserLogin);
+
+  return <>{user ? <AppRouter /> : <Register />}</>;
 };
 
 export default App;

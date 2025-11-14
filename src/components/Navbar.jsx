@@ -1,14 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { Credentials } from "../context/UserCredentials";
-
-
-
+import { UserLogin } from "../context/LoginContext";
 
 const Navbar = () => {
-const {closeSesion} = useContext(Credentials)
-
+  const { logOut } = useContext(UserLogin);
 
   return (
     <>
@@ -19,24 +15,20 @@ const {closeSesion} = useContext(Credentials)
           </p>
         </Link>
 
-        <div className="flex  gap-2">
-          <Link to={"/shows"}>Shows</Link>
-          <Link to={"/mynetflix"}>MyNetflix</Link>
-        </div>
-
-        <div className="flex items-center gap-3 cursor-pointer">
-          <Link to={"/login"}>
-            <button className="cursor-pointer font-bold">Login</button>
+        <div className="flex gap-8">
+          <Link to={"/shows"} className="font-bebas tracking-wider">
+            Shows
           </Link>
-          <Link to={"/register"}>
-            <button className="px-2 py-1 bg-red-600  tracking-wider font-bold capitalize  cursor-pointer">
-              Sign Up
-            </button>
+          <Link to={"/mynetflix"} className="font-bebas tracking-wider">
+            MyNetflix
           </Link>
         </div>
-       <button onClick={closeSesion}
-       className="cursor-pointer"
-       >Log Out</button>
+        <button
+          className="cursor-pointer bg-red-600 px-3 py-1 rounded-sm font-bebas tracking-wider text-xs"
+          onClick={logOut}
+        >
+          Log Out
+        </button>
       </div>
     </>
   );

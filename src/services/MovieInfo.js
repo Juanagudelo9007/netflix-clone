@@ -7,9 +7,10 @@ const endpoints = {
   upcoming: `${url}/movie/upcoming?api_key=${key}`,
   trending: `${url}/trending/movie/day?api_key=${key}`,
   tvShows: `${url}/tv/popular?api_key=${key}`,
-  tvTrending: `${url}/trending/tv/day?api_key=${key}`,
-  tvTopRated: `${url}/tv/top_rated?api_key=${key}`,
+  tvTrending: `${url}/trending/tv/week?api_key=${key}`,
+  tvAiringToday: `${url}/tv/airing_today?api_key=${key}`,
   tvAnime: `${url}/discover/tv?api_key=${key}&with_genres=16`,
+  rvDefault: `${url}/tv/top_rated?api_key=${key}`,
 };
 
 export default endpoints;

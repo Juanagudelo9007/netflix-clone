@@ -25,7 +25,7 @@ const Hero = () => {
   const { title, backdrop_path, release_date, overview } = movie;
 
   return (
-    <div className="w-full h-[500px] lg:h-[600px] ">
+    <div className="w-full h-[500px] lg:h-[600px]">
       <div className="h-full w-full ">
         <div className="absolute w-full h-[500px] lg:h-[600px] bg-linear-to-r from-black" />
         <img
@@ -33,7 +33,7 @@ const Hero = () => {
           src={`https://image.tmdb.org/t/p/original${backdrop_path}`}
           alt={title}
         />
-        <div className="absolute w-[50%] top-[20%] md:top-[23%] lg:top-[35%] p-2 ">
+        <div className="absolute w-[50%] top-[20%] md:top-[23%] lg:top-[35%] p-4 ">
           <h1 className="text-3xl font-bold mb-5 md:text-4xl">{title}</h1>
           <div className=" flex flex-col gap-3">
             <div className="flex gap-4">
