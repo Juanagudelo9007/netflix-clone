@@ -1,6 +1,6 @@
 import React from "react";
 import { createContext, useEffect, useState } from "react";
-import { app } from "../firebase/firebase";
+import { app, db } from "../firebase/firebase";
 import {
   getAuth,
   onAuthStateChanged,
@@ -9,6 +9,7 @@ import {
   updateProfile,
   signOut,
 } from "firebase/auth";
+import { setDoc, doc } from "firebase/firestore";
 
 export const UserLogin = createContext();
 
@@ -34,13 +35,26 @@ const LoginContext = ({ children }) => {
           email,
           password
         );
+        await updateProfile(userCredentials.user, { displayName: name });
+        await setDoc(doc(db, "Favorites", userCredentials.user.uid), {
+          name: userCredentials.user.displayName,
+          id: userCredentials.user.uid,
+          likedMovies: [],
+        });
+        await setDoc(doc(db, "watchLater", userCredentials.user.uid), {
+          name: userCredentials.user.displayName,
+          id: userCredentials.user.uid,
+          saved: [],
+        });
+
         setUser(userCredentials.user);
-        setLoading(false)
+        setLoading(false);
         console.log("user created:", userCredentials.user);
+        console.log("User Name:", userCredentials.user.displayName);
       } else {
         const userIn = await signInWithEmailAndPassword(auth, email, password);
         setUser(userIn.user);
-        setLoading(false)
+        setLoading(false);
         console.log("user logged in:", userIn.user);
       }
     } catch (error) {

@@ -7,7 +7,16 @@ const Register = () => {
     useContext(UserLogin);
 
   return (
-    <div className="flex justify-center items-center w-full h-screen bg-[url('/netflix-bg.jpg')]">
+    <div className="relative flex justify-center items-center w-full h-screen bg-[url('/netflix-bg.jpg')]">
+      <div className="fixed inset-0 bg-black/60" />
+      <h1 className="absolute top-2 left-5 text-4xl md:text-5xl font-bebas text-red-600">
+        Netflix
+      </h1>
+      <img
+        src="/public/netflix-logo.png"
+        alt=""
+        className=" absolute   top-2 right-2  h-12  md:w-14 md:h-14 "
+      />
       <form
         action=""
         className="relative bg-black/80 flex flex-col items-center justify-center w-[300px] h-[350px]  gap-4"
@@ -63,7 +72,7 @@ const Register = () => {
         </button>
       </form>
       {loading && (
-        <div className="flex flex-col gap-11 justify-center items-center fixed inset-0 bg-black/80">
+        <div className="flex flex-col gap-11 justify-center items-center fixed inset-0 bg-black/90">
           <div className="h-12 w-12 border-4 border-red-600 border-t-transparent rounded-full animate-spin"></div>
           <h1 className="text-xl font-bebas tracking-wider">Loading...</h1>
         </div>

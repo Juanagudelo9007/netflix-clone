@@ -8,18 +8,30 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="absolute flex w-full p-4 items-center justify-between z-10">
+      <div className=" flex w-full p-4 items-center justify-between text-xs md:text-lg">
         <Link to={"/home"}>
           <p className="font-bebas  text-2xl md:text-5xl text-red-600 font-extrabold tracking-wider">
             Netflix
           </p>
         </Link>
 
-        <div className="flex gap-8">
-          <Link to={"/shows"} className="font-bebas tracking-wider">
+        <div className="flex gap-4 md:gap-8">
+          <Link
+            to={"/home"}
+            className="font-bebas tracking-wider bg-white text-black px-2 py-1 rounded-sm  md:bg-transparent md:text-white md:hover:bg-white md:hover:text-black md:hover:rounded-lg transition-all duration-500"
+          >
+            Home
+          </Link>
+          <Link
+            to={"/shows"}
+            className="font-bebas tracking-wider bg-white text-black px-2 py-1 rounded-sm  md:bg-transparent md:text-white md:hover:bg-white md:hover:text-black md:hover:rounded-lg transition-all duration-500"
+          >
             Shows
           </Link>
-          <Link to={"/mynetflix"} className="font-bebas tracking-wider">
+          <Link
+            to={"/mynetflix"}
+            className="font-bebas tracking-wider bg-white text-black px-2 py-1 rounded-sm  md:bg-transparent md:text-white md:hover:bg-white md:hover:text-black md:hover:rounded-lg transition-all duration-500"
+          >
             MyNetflix
           </Link>
         </div>

@@ -57,7 +57,7 @@ const MovieSection = ({ title, movieUrl, tvUrl }) => {
 
   return (
     <>
-      <h1 className="capitalize font-bebas tracking-wider p-1 text-xl">
+      <h1 className="capitalize font-bebas tracking-wider ml-1 text-lg md:text-xl">
         {title}
       </h1>
       {location.pathname === "/home" ? (
@@ -87,7 +87,7 @@ const MovieSection = ({ title, movieUrl, tvUrl }) => {
         <div className="relative flex items-center group" id="shows">
           <button onClick={() => scrollHorizontal("left")}>
             <GrPrevious
-              className="absolute left-2 top-16 bg-black/60 backdrop-blur-sm  block  md:hidden group-hover:md:block cursor-pointer rounded-full p-2 z-20 "
+              className="absolute left-2 top-16 bg-black/80 backdrop-blur-sm  block  md:hidden group-hover:md:block cursor-pointer rounded-full p-2 z-20 "
               size={30}
             />
           </button>
@@ -100,7 +100,7 @@ const MovieSection = ({ title, movieUrl, tvUrl }) => {
             ))}
           </div>
           <button
-            className="absolute right-2 top-16 bg-black/60 backdrop-blur-sm  block md:hidden  group-hover:md:block cursor-pointer rounded-full p-2 z-20"
+            className="absolute right-2 top-16 bg-black/80 backdrop-blur-sm  block md:hidden  group-hover:md:block cursor-pointer rounded-full p-2 z-20"
             onClick={() => scrollHorizontal("right")}
           >
             <GrNext size={15} />

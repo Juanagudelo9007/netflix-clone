@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import endpoints from "../services/MovieInfo";
 import axios from "axios";
+import { PersonalInfo } from "../context/UserInfo";
 
 const Hero = () => {
   const [movie, setMovie] = useState({});
   const [readMore, setReadMore] = useState(false);
+  const { addWatchLater } = useContext(PersonalInfo);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -25,22 +27,30 @@ const Hero = () => {
   const { title, backdrop_path, release_date, overview } = movie;
 
   return (
-    <div className="w-full h-[500px] lg:h-[600px]">
+    <div className="relative w-full h-[500px] lg:h-[600px]">
       <div className="h-full w-full ">
         <div className="absolute w-full h-[500px] lg:h-[600px] bg-linear-to-r from-black" />
+        <img
+          src="/public/netflix-logo.png"
+          alt=""
+          className=" absolute   top-3 left-1  h-6  z-20 md:w-8 md:h-8 "
+        />
         <img
           className="w-full h-full object-cover object-top "
           src={`https://image.tmdb.org/t/p/original${backdrop_path}`}
           alt={title}
         />
-        <div className="absolute w-[50%] top-[20%] md:top-[23%] lg:top-[35%] p-4 ">
+        <div className="absolute w-[50%] top-[20%] md:top-[30%] lg:top-[35%] p-4 ">
           <h1 className="text-3xl font-bold mb-5 md:text-4xl">{title}</h1>
           <div className=" flex flex-col gap-3">
             <div className="flex gap-4">
               <button className="cursor-pointer px-4 bg-white  py-1 text-black">
                 Play
               </button>
-              <button className=" cursor-pointer px-3 py-1 border border-white">
+              <button
+                className=" cursor-pointer px-3 py-1 border border-white"
+                onClick={() => addWatchLater(movie)}
+              >
                 Watch Later
               </button>
             </div>

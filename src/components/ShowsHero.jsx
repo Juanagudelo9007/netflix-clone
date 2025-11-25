@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { PersonalInfo } from "../context/UserInfo";
 import endpoints from "../services/MovieInfo";
 import axios from "axios";
 
 const ShowsHero = () => {
   const [tvShows, setTvShows] = useState({});
   const [readMore, setReadMore] = useState(false);
+  const { 
+        addWatchLater,} = useContext(PersonalInfo)
 
   useEffect(() => {
     const fetchingShows = async () => {
@@ -28,18 +31,27 @@ const ShowsHero = () => {
       <div className="h-full w-full">
         <div className="absolute w-full h-[500px] lg:h-[600px] bg-linear-to-r from-black" />
         <img
+          src="/public/netflix-logo.png"
+          alt=""
+          className=" absolute   top-[76px] left-1  h-6  md:w-8 md:h-8 "
+        />
+        <img
           className="w-full h-full object-cover object-top"
           src={`https://image.tmdb.org/t/p/original${backdrop_path}`}
           alt={name}
         />
-        <div className="absolute w-[50%] top-[20%] md:top-[25%] lg:top-[35%] p-2">
+
+        <div className="absolute w-[50%] top-[20%] md:top-[30%] lg:top-[35%] p-2">
           <h1 className="text-2xl font-bold mb-5 md:text-3xl">{name}</h1>
           <div className="flex flex-col gap-3">
             <div className="flex gap-4">
               <button className="bg-white text-black px-4  cursor-pointer">
                 play
               </button>
-              <button className="px-4 py-1 cursor-pointer border border-white">
+              <button
+                className="px-4 py-1 cursor-pointer border border-white"
+                onClick={() => addWatchLater(tvShows)}
+              >
                 watch later
               </button>
             </div>

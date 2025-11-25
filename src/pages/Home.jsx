@@ -8,7 +8,6 @@ import Navbar from "../components/Navbar";
 const Home = () => {
   return (
     <>
-      <Navbar />
       <Hero />
       <MovieSection title="upcoming" movieUrl={endpoints.upcoming} />
       <MovieSection title="top Rated" movieUrl={endpoints.topRated} />

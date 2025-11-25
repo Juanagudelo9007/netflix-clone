@@ -1,10 +1,14 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import endpoints from "../services/MovieInfo";
 import axios from "axios";
+import { PersonalInfo } from "../context/UserInfo";
+import { FaRegHeart } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa6";
 
 const DefaultShows = () => {
   const [shows, setShows] = useState([]);
+  const { addWatchLater, addMovies } = useContext(PersonalInfo);
 
   useEffect(() => {
     const showsDefault = async () => {
@@ -28,12 +32,25 @@ const DefaultShows = () => {
     );
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 group gap-4 items-center p-2 ">
+    <div className="relative grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 group gap-4 items-center p-2 ">
       {shows.map((t) => (
         <div
           className="relative sm:w-60 md:w-[310px] lg:w-[315px] rounded-sm "
           key={t.id}
         >
+          <button
+            className="absolute top-1 right-1 z-10 cursor-pointer md:hidden"
+            onClick={() => addMovies(r)}
+          >
+            <FaRegHeart />
+          </button>
+          <button
+            className="absolute top-1 left-1 z-10 cursor-pointer md:hidden"
+            onClick={() => addWatchLater(r)}
+          >
+            <FaPlus />
+          </button>
+
           <img
             className="object-cover h-full rounded-sm"
             src={`https://image.tmdb.org/t/p/w500${t.backdrop_path}`}
@@ -43,6 +60,18 @@ const DefaultShows = () => {
             {t.name}
           </h1>
           <div className="hidden absolute inset-0 md:flex justify-center items-center bg-black/60  backdrop-blur-md opacity-0 hover:opacity-100 transition-all duration-300 rounded-sm">
+            <button
+              className="absolute top-1 right-1 z-10 cursor-pointer"
+              onClick={() => addMovies(t)}
+            >
+              <FaRegHeart />
+            </button>
+            <button
+              className="absolute top-1 left-1 z-10 cursor-pointer"
+              onClick={() => addWatchLater(t)}
+            >
+              <FaPlus />
+            </button>
             <h1 className="text-xl font-bebas tracking-wider">{t.name}</h1>
           </div>
         </div>
