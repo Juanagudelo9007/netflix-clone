@@ -1,6 +1,8 @@
 import React, { useRef, useContext } from "react";
 import { PersonalInfo } from "../context/UserInfo";
 import { GrPrevious, GrNext } from "react-icons/gr";
+import { FaMinus } from "react-icons/fa";
+import { MdFavorite } from "react-icons/md";
 
 const MyNetflix = () => {
   const { favorites, later } = useContext(PersonalInfo);
@@ -25,25 +27,40 @@ const MyNetflix = () => {
           className="h-full w-full object-cover"
         />
       </div>
-      <div id="container" className="mt-6 group">
+      <div id="container" className="mt-6">
+        <div id="btns" className="relative group ">
+          <button onClick={() => scrollingX("left", "later")}>
+            <GrPrevious
+              className="absolute left-1 top-28 bg-black/80 backdrop-blur-sm  cursor-pointer rounded-full p-2 z-20"
+              size={30}
+            />
+          </button>
+          <button
+            className="absolute right-2 top-28 bg-black/80 backdrop-blur-sm  cursor-pointer rounded-full p-2 z-20"
+            onClick={() => scrollingX("right", "later")}
+          >
+            <GrNext size={15} />
+          </button>
+        </div>
         <div
           id="watchLater"
-          className="relative h-full overflow-x-auto scroll-smooth whitespace-nowrap group no-scrollbar w-full"
+          className="relative h-full overflow-x-auto scroll-smooth whitespace-nowrap  no-scrollbar w-full"
           ref={watchLaterRef}
         >
           <h1 className="capitalize tracking-wider font-bebas ml-1 text-lg md:text-xl">
             Watch Later
           </h1>
+
           {later.map((l) => (
             <div
               key={l.id}
-              className="inline-block relative sm:w-[200px] md:w-60 lg:w-[280px] overflow-hidden m-1 cursor-pointer"
+              className="inline-block relative sm:w-[200px] md:w-60 lg:w-[280px] overflow-hidden m-1 cursor-pointer group "
             >
-              <button onClick={() => scrollingX("left", "later")}>
-                <GrPrevious
-                  className="absolute left-1 top-[85px] bg-black/80 backdrop-blur-sm block md:hidden group-hover:md:block cursor-pointer rounded-full p-2 z-20"
-                  size={30}
-                />
+              <button className="absolute  top-1 left-2 cursor-pointer  md:hidden group-hover:md:block text-red-600 z-1">
+                <FaMinus />
+              </button>
+              <button className="absolute top-1 right-2 text-red-600 md:hidden  group-hover:md:block z-1 cursor-pointer">
+                <MdFavorite />
               </button>
               <img
                 className="h-40 w-full block rounded-md cursor-pointer object-cover"
@@ -52,21 +69,37 @@ const MyNetflix = () => {
                 }`}
                 alt=""
               />
-              <button
-                className="absolute right-1 top-[85px] bg-black/80 backdrop-blur-sm block md:hidden group-hover:md:block cursor-pointer rounded-full p-2 z-20"
-                onClick={() => scrollingX("right", "later")}
-              >
-                <GrNext size={15} />
-              </button>
-              <h1 className="md:hidden absolute top-[80%] left-1 text-lg font-bebas tracking-wider text-white/80">
+
+              <h1 className="md:hidden absolute top-[80%] left-1 text-lg font-bebas tracking-wider text-white/90">
                 {l.name} {l.title}
               </h1>
+
+              {/* Overlay */}
+              <div className="flex absolute inset-0 bg-black/60 backdrop-blur-md items-center justify-center opacity-0 hover:opacity-100 transition-all duration-300 rounded-md">
+                <h1 className="font-bebas tracking-wider">
+                  {l.name} {l.title}
+                </h1>
+              </div>
             </div>
           ))}
         </div>
+        <div id="btns" className="relative">
+          <button onClick={() => scrollingX("left", "favorites")}>
+            <GrPrevious
+              className="absolute  left-1 top-28 bg-black/80 backdrop-blur-sm  cursor-pointer rounded-full p-2 z-20 "
+              size={30}
+            />
+          </button>
+          <button
+            className="absolute   right-2 top-28 bg-black/80 backdrop-blur-sm  cursor-pointer rounded-full p-2 z-20"
+            onClick={() => scrollingX("right", "favorites")}
+          >
+            <GrNext size={15} />
+          </button>
+        </div>
         <div
           id="favorites"
-          className="relative h-full overflow-x-auto scroll-smooth whitespace-nowrap group no-scrollbar w-full"
+          className="relative h-full overflow-x-auto scroll-smooth whitespace-nowrap  no-scrollbar w-full"
           ref={favoritesRef}
         >
           <h1 className="capitalize tracking-wider font-bebas ml-1 text-lg md:text-xl">
@@ -75,13 +108,13 @@ const MyNetflix = () => {
           {favorites.map((t) => (
             <div
               key={t.id}
-              className="inline-block relative sm:w-[200px] md:w-60 lg:w-[280px] overflow-hidden m-1 cursor-pointer"
+              className="inline-block relative sm:w-[200px] md:w-60 lg:w-[280px] overflow-hidden m-1 cursor-pointer group"
             >
-              <button onClick={() => scrollingX("left", "favorites")}>
-                <GrPrevious
-                  className="absolute left-1 top-[85px] bg-black/80 backdrop-blur-sm block md:hidden group-hover:md:block cursor-pointer rounded-full p-2 z-20"
-                  size={30}
-                />
+              <button className="text-red-600 absolute top-1 left-2 z-1 md:hidden group-hover:md:block">
+                <FaMinus />
+              </button>
+              <button className="absolute md:hidden top-1 right-2 group-hover:md:block text-red-600 cursor-pointer  z-1">
+                <MdFavorite />
               </button>
               <img
                 className="h-40 w-full block rounded-md cursor-pointer object-cover"
@@ -90,15 +123,16 @@ const MyNetflix = () => {
                 }`}
                 alt=""
               />
-              <button
-                className="absolute right-1 top-[85px] bg-black/80 backdrop-blur-sm block md:hidden group-hover:md:block cursor-pointer rounded-full p-2 z-20"
-                onClick={() => scrollingX("right", "favorites")}
-              >
-                <GrNext size={15} />
-              </button>
-              <h1 className="md:hidden absolute top-[80%] left-1 text-lg font-bebas tracking-wider text-white/80">
+
+              <h1 className="md:hidden absolute top-[80%] left-1 text-lg font-bebas tracking-wider text-white/90">
                 {t.name} {t.title}
               </h1>
+              {/* Overlay */}
+              <div className="flex absolute inset-0 bg-black/60 backdrop-blur-md items-center justify-center opacity-0 hover:opacity-100 transition-all duration-300 rounded-md">
+                <h1 className="font-bebas tracking-wider">
+                  {t.name} {t.title}
+                </h1>
+              </div>
             </div>
           ))}
         </div>

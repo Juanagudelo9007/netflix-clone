@@ -72,7 +72,7 @@ const Register = () => {
         </button>
       </form>
       {loading && (
-        <div className="flex flex-col gap-11 justify-center items-center fixed inset-0 bg-black/90">
+        <div className="flex flex-col gap-11 justify-center items-center fixed inset-0 bg-black">
           <div className="h-12 w-12 border-4 border-red-600 border-t-transparent rounded-full animate-spin"></div>
           <h1 className="text-xl font-bebas tracking-wider">Loading...</h1>
         </div>
