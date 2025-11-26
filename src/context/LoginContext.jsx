@@ -36,14 +36,17 @@ const LoginContext = ({ children }) => {
           password
         );
         await updateProfile(userCredentials.user, { displayName: name });
-        await setDoc(doc(db, "Favorites", userCredentials.user.uid), {
+        await setDoc(doc(db, "Users", userCredentials.user.uid), {
           name: userCredentials.user.displayName,
           id: userCredentials.user.uid,
+          email,
+        });
+        await setDoc(doc(db, "Favorites", userCredentials.user.uid), {
+          name: userCredentials.user.displayName,
           likedMovies: [],
         });
         await setDoc(doc(db, "watchLater", userCredentials.user.uid), {
           name: userCredentials.user.displayName,
-          id: userCredentials.user.uid,
           saved: [],
         });
 
