@@ -6,8 +6,7 @@ import axios from "axios";
 const ShowsHero = () => {
   const [tvShows, setTvShows] = useState({});
   const [readMore, setReadMore] = useState(false);
-  const { 
-        addWatchLater,} = useContext(PersonalInfo)
+  const { addWatchLater } = useContext(PersonalInfo);
 
   useEffect(() => {
     const fetchingShows = async () => {
@@ -33,7 +32,7 @@ const ShowsHero = () => {
         <img
           src="/public/netflix-logo.png"
           alt=""
-          className=" absolute   top-[76px] left-1  h-6  md:w-8 md:h-8 "
+          className=" absolute  mt-4 top-[76px] left-1  h-6  md:w-8 md:h-8 "
         />
         <img
           className="w-full h-full object-cover object-top"
@@ -41,7 +40,7 @@ const ShowsHero = () => {
           alt={name}
         />
 
-        <div className="absolute w-[50%] top-[20%] md:top-[30%] lg:top-[35%] p-2">
+        <div className="absolute w-[50%] top-[20%] md:top-[35%] lg:top-[40%] p-2">
           <h1 className="text-2xl font-bold mb-5 md:text-3xl">{name}</h1>
           <div className="flex flex-col gap-3">
             <div className="flex gap-4">

@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import { FaRegHeart } from "react-icons/fa";
+import { FcLikePlaceholder } from "react-icons/fc";
 import { FaPlus } from "react-icons/fa6";
 import { PersonalInfo } from "../context/UserInfo";
 
@@ -11,16 +11,16 @@ const MovieCard = ({ movie }) => {
     <>
       <div className=" inline-block relative sm:w-[200px] md:w-60  lg:w-[280px]  overflow-hidden m-1 cursor-pointer">
         <button
-          className="absolute top-1 right-1 z-10 cursor-pointer md:hidden"
+          className="absolute top-1 right-1 z-10 cursor-pointer md:hidden text-white"
           onClick={() => addMovies(movie)}
         >
-          <FaRegHeart />
+          <FcLikePlaceholder size={18} />
         </button>
         <button
           className="absolute top-1 left-1 z-10 cursor-pointer md:hidden"
           onClick={() => addWatchLater(movie)}
         >
-          <FaPlus />
+          <FaPlus size={18} />
         </button>
 
         <img
@@ -38,13 +38,13 @@ const MovieCard = ({ movie }) => {
             className="absolute top-1 right-1 z-10 cursor-pointer"
             onClick={() => addMovies(movie)}
           >
-            <FaRegHeart />
+            <FcLikePlaceholder size={18} />
           </button>
           <button
             className="absolute top-1 left-1 z-10 cursor-pointer"
             onClick={() => addWatchLater(movie)}
           >
-            <FaPlus />
+            <FaPlus size={18}/>
           </button>
           <h1 className="font-bebas tracking-wider">{title}</h1>
         </div>

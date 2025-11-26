@@ -5,7 +5,8 @@ import { FaMinus } from "react-icons/fa";
 import { MdFavorite } from "react-icons/md";
 
 const MyNetflix = () => {
-  const { favorites, later } = useContext(PersonalInfo);
+  const { favorites, later, removeFav, removeWatchLater } =
+    useContext(PersonalInfo);
   const watchLaterRef = useRef(null);
   const favoritesRef = useRef(null);
 
@@ -20,7 +21,7 @@ const MyNetflix = () => {
 
   return (
     <div className="w-full h-full">
-      <div className="w-full h-[150px] md:h-[250px]">
+      <div className="w-full h-[180px] md:h-[270px]">
         <img
           src="/public/netflix-bg-option3.jpg"
           alt=""
@@ -31,12 +32,12 @@ const MyNetflix = () => {
         <div id="btns" className="relative group ">
           <button onClick={() => scrollingX("left", "later")}>
             <GrPrevious
-              className="absolute left-1 top-28 bg-black/80 backdrop-blur-sm  cursor-pointer rounded-full p-2 z-20"
+              className="absolute left-1 top-28 bg-black/80 backdrop-blur-sm  cursor-pointer rounded-full p-2 z-20  hover:bg-black/50 transition-all duration-300"
               size={30}
             />
           </button>
           <button
-            className="absolute right-2 top-28 bg-black/80 backdrop-blur-sm  cursor-pointer rounded-full p-2 z-20"
+            className="absolute right-2 top-28 bg-black/80 backdrop-blur-sm  cursor-pointer rounded-full p-2 z-20 hover:bg-black/50 transition-all duration-300 "
             onClick={() => scrollingX("right", "later")}
           >
             <GrNext size={15} />
@@ -56,12 +57,13 @@ const MyNetflix = () => {
               key={l.id}
               className="inline-block relative sm:w-[200px] md:w-60 lg:w-[280px] overflow-hidden m-1 cursor-pointer group "
             >
-              <button className="absolute  top-1 left-2 cursor-pointer  md:hidden group-hover:md:block text-red-600 z-1">
-                <FaMinus />
+              <button
+                className="absolute  top-1 right-2 cursor-pointer  md:hidden group-hover:md:block text-red-600 z-1"
+                onClick={() => removeWatchLater(l.id)}
+              >
+                <FaMinus size={18} />
               </button>
-              <button className="absolute top-1 right-2 text-red-600 md:hidden  group-hover:md:block z-1 cursor-pointer">
-                <MdFavorite />
-              </button>
+
               <img
                 className="h-40 w-full block rounded-md cursor-pointer object-cover"
                 src={`https://image.tmdb.org/t/p/w200${
@@ -86,12 +88,12 @@ const MyNetflix = () => {
         <div id="btns" className="relative">
           <button onClick={() => scrollingX("left", "favorites")}>
             <GrPrevious
-              className="absolute  left-1 top-28 bg-black/80 backdrop-blur-sm  cursor-pointer rounded-full p-2 z-20 "
+              className="absolute  left-1 top-28 bg-black/80 backdrop-blur-sm  cursor-pointer rounded-full p-2 z-20   hover:bg-black/50 transition-all duration-300"
               size={30}
             />
           </button>
           <button
-            className="absolute   right-2 top-28 bg-black/80 backdrop-blur-sm  cursor-pointer rounded-full p-2 z-20"
+            className="absolute   right-2 top-28 bg-black/80 backdrop-blur-sm  cursor-pointer rounded-full p-2 z-20  hover:bg-black/50 transition-all duration-300"
             onClick={() => scrollingX("right", "favorites")}
           >
             <GrNext size={15} />
@@ -110,11 +112,11 @@ const MyNetflix = () => {
               key={t.id}
               className="inline-block relative sm:w-[200px] md:w-60 lg:w-[280px] overflow-hidden m-1 cursor-pointer group"
             >
-              <button className="text-red-600 absolute top-1 left-2 z-1 md:hidden group-hover:md:block">
-                <FaMinus />
-              </button>
-              <button className="absolute md:hidden top-1 right-2 group-hover:md:block text-red-600 cursor-pointer  z-1">
-                <MdFavorite />
+              <button
+                className="absolute md:hidden top-1 right-2 group-hover:md:block text-red-600 cursor-pointer  z-1"
+                onClick={() => removeFav(t.id)}
+              >
+                <MdFavorite size={18} />
               </button>
               <img
                 className="h-40 w-full block rounded-md cursor-pointer object-cover"

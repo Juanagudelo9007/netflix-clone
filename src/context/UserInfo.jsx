@@ -1,15 +1,17 @@
 import { useContext, useState, useEffect, createContext } from "react";
 import { db } from "../firebase/firebase";
-import {  setDoc, getDoc, doc } from "firebase/firestore";
+import { setDoc, getDoc, doc } from "firebase/firestore";
 import { UserLogin } from "./LoginContext";
 
 export const PersonalInfo = createContext();
 
 const UserInfo = ({ children }) => {
   const [favorites, setFavorites] = useState([]);
+  const [toggle, setToggle] = useState(false);
   const [later, setLater] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const { user } = useContext(UserLogin);
+  c;
 
   /* Loading liked Movies (PERSISTENCE) */
 
@@ -112,6 +114,8 @@ const UserInfo = ({ children }) => {
         setLater,
         removeFav,
         removeWatchLater,
+        toggle,
+        setToggle,
       }}
     >
       {children}

@@ -3,7 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import endpoints from "../services/MovieInfo";
 import axios from "axios";
 import { PersonalInfo } from "../context/UserInfo";
-import { FaRegHeart } from "react-icons/fa";
+import { FcLikePlaceholder } from "react-icons/fc";
 import { FaPlus } from "react-icons/fa6";
 
 const DefaultShows = () => {
@@ -40,15 +40,15 @@ const DefaultShows = () => {
         >
           <button
             className="absolute top-1 right-1 z-10 cursor-pointer md:hidden"
-            onClick={() => addMovies(r)}
+            onClick={() => addMovies(t)}
           >
-            <FaRegHeart />
+            <FcLikePlaceholder size={18} />
           </button>
           <button
             className="absolute top-1 left-1 z-10 cursor-pointer md:hidden"
             onClick={() => addWatchLater(r)}
           >
-            <FaPlus />
+            <FaPlus size={18} />
           </button>
 
           <img
@@ -64,13 +64,13 @@ const DefaultShows = () => {
               className="absolute top-1 right-1 z-10 cursor-pointer"
               onClick={() => addMovies(t)}
             >
-              <FaRegHeart />
+              <FcLikePlaceholder size={18} />
             </button>
             <button
               className="absolute top-1 left-1 z-10 cursor-pointer"
               onClick={() => addWatchLater(t)}
             >
-              <FaPlus />
+              <FaPlus size={18}/>
             </button>
             <h1 className="text-xl font-bebas tracking-wider">{t.name}</h1>
           </div>

@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import endpoints from "../services/MovieInfo";
 import { PersonalInfo } from "../context/UserInfo";
-import { FaRegHeart } from "react-icons/fa";
+import { FcLikePlaceholder } from "react-icons/fc";
 import { FaPlus } from "react-icons/fa6";
 
 const DefaultMovies = () => {
@@ -42,13 +42,13 @@ const DefaultMovies = () => {
             className="absolute top-1 right-1 z-10 cursor-pointer md:hidden"
             onClick={() => addMovies(r)}
           >
-            <FaRegHeart />
+            <FcLikePlaceholder size={18} />
           </button>
           <button
             className="absolute top-1 left-1 z-10 cursor-pointer md:hidden"
             onClick={() => addWatchLater(r)}
           >
-            <FaPlus />
+            <FaPlus size={18} />
           </button>
           <img
             className="object-cover h-full rounded-sm"
@@ -64,13 +64,13 @@ const DefaultMovies = () => {
               className="absolute top-1 right-1 z-10 cursor-pointer"
               onClick={() => addMovies(r)}
             >
-              <FaRegHeart />
+              <FcLikePlaceholder size={18} />
             </button>
             <button
               className="absolute top-1 left-1 z-10 cursor-pointer"
               onClick={() => addWatchLater(r)}
             >
-              <FaPlus />
+              <FaPlus size={18}/>
             </button>
             <h1 className="text-xl font-bebas tracking-wider">{r.title}</h1>
           </div>
