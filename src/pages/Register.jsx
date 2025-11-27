@@ -1,9 +1,17 @@
 import { useContext } from "react";
 import { UserLogin } from "../context/LoginContext";
+import { createPortal } from "react-dom";
 
 const Register = () => {
-  const { handleForm, isRegistered, setIsRegistered, loading, errors } =
-    useContext(UserLogin);
+  const {
+    handleForm,
+    isRegistered,
+    setIsRegistered,
+    loading,
+    errors,
+    closeErrors,
+    setCloseErrors,
+  } = useContext(UserLogin);
 
   return (
     <div className="relative flex justify-center items-center w-full h-screen bg-[url('/netflix-bg.jpg')]">
@@ -73,7 +81,7 @@ const Register = () => {
 
       {/* Loading overlay */}
 
-      {loading && (
+      {loading &&  (
         <div className="flex flex-col gap-11 justify-center items-center fixed inset-0 bg-black">
           <div className="h-14 w-14 border-8 border-red-600 border-t-transparent rounded-full animate-spin"></div>
           <h1 className="text-xl font-bebas tracking-wider capitalize">
@@ -84,7 +92,22 @@ const Register = () => {
 
       {/* Error Message */}
       {console.log(errors)}
-      {errors && <div className="text-2xl  text-red-600 z-2">{errors}</div>}
+      {errors && !closeErrors &&
+        createPortal(
+          <div className="fixed inset-0 flex justify-center items-center bg-black/60 backdrop-blur-xl">
+            <div className="bg-white/10 w-72 h-52 flex flex-col justify-center items-center gap-4 p-2">
+              <h1 className="text-lg font-bebas tracking-wider text-center text-red-600">
+                {errors}
+              </h1>
+              <button className="bg-red-600 px-6 py-1 font-bebas tracking-wider rounded-sm"
+              onClick={()=> setCloseErrors(!closeErrors)}
+              >
+                ok
+              </button>
+            </div>
+          </div>,
+          document.getElementById("errors")
+        )}
     </div>
   );
 };

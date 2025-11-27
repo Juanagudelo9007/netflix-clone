@@ -17,8 +17,17 @@ const LoginContext = ({ children }) => {
   const [isRegistered, setIsRegistered] = useState(false);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState("");
+  const [closeErrors, setCloseErrors] = useState(false); 
   const auth = getAuth(app);
+
+  {
+    /* Validation / Errors */
+  }
+
+  const nameValidation = /^[A-Za-z]+$/;
+  const passwordValidation =
+    /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+={}\[\]:;"'<>,.?/-])(?=.{6,})/;
 
   const handleForm = async (e) => {
     e.preventDefault();
@@ -28,6 +37,19 @@ const LoginContext = ({ children }) => {
     const name = e.target.name.value;
 
     console.log("data", email, password, name);
+
+    if (!nameValidation.test(name)) {
+      setErrors("the name must contain letters");
+      setLoading(false);
+      return;
+    }
+    if (!passwordValidation.test(password)) {
+      setErrors(
+        "Password must have an uppercase, a special character, and be longer than 5 characters."
+      );
+      setLoading(false);
+      return;
+    }
 
     try {
       if (!isRegistered) {
@@ -62,10 +84,10 @@ const LoginContext = ({ children }) => {
         console.log("user logged in:", userIn.user);
       }
     } catch (error) {
-      const message = errorsFirebase(error.code)
-      console.log("error while trying to register",error);
+      const message = errorsFirebase(error.code);
+      console.log("error while trying to register", error);
       setErrors(message);
-      setLoading(false)
+      setLoading(false);
     }
   };
 
@@ -92,19 +114,20 @@ const LoginContext = ({ children }) => {
     }
   };
 
-   {
-     /* Errors */
-   }
+  {
+    /* Errors */
+  }
 
-   const errorsFirebase = (code) => {
-     switch (code) {
-       case "auth/email-already-in-use":
-         return "Email already use";
-        
-       default:
-         return "An error happened, please try again";
-     }
-   };
+  const errorsFirebase = (code) => {
+    switch (code) {
+      case "auth/email-already-in-use":
+        return "Email already use";
+
+      default:
+        return "An error happened, please try again";
+    }
+  };
+
   return (
     <UserLogin.Provider
       value={{
@@ -116,7 +139,8 @@ const LoginContext = ({ children }) => {
         logOut,
         loading,
         errors,
-        
+        closeErrors,
+        setCloseErrors,
       }}
     >
       {children}
