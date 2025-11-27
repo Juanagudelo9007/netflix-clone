@@ -7,7 +7,7 @@ import { FaPlus } from "react-icons/fa6";
 
 const DefaultMovies = () => {
   const [main, setMain] = useState([]);
-  const { addWatchLater, addMovies } = useContext(PersonalInfo);
+  const { addWatchLater, addMovies, messageAdded } = useContext(PersonalInfo);
 
   useEffect(() => {
     const MoviesDefault = async () => {
@@ -40,13 +40,17 @@ const DefaultMovies = () => {
         >
           <button
             className="absolute top-1 right-1 z-10 cursor-pointer md:hidden"
-            onClick={() => addMovies(r)}
+            onClick={() => {addMovies(r);
+              messageAdded("favorites")
+            }}
           >
             <FcLikePlaceholder size={18} />
           </button>
           <button
             className="absolute top-1 left-1 z-10 cursor-pointer md:hidden"
-            onClick={() => addWatchLater(r)}
+            onClick={() => {addWatchLater(r)
+              messageAdded("watchLater")
+            }}
           >
             <FaPlus size={18} />
           </button>
@@ -62,13 +66,17 @@ const DefaultMovies = () => {
           <div className="hidden absolute inset-0 md:flex justify-center items-center bg-black/60  backdrop-blur-md opacity-0 hover:opacity-100 transition-all duration-300 rounded-sm">
             <button
               className="absolute top-1 right-1 z-10 cursor-pointer"
-              onClick={() => addMovies(r)}
+              onClick={() =>{ addMovies(r);
+                messageAdded("favorites")
+              }}
             >
               <FcLikePlaceholder size={18} />
             </button>
             <button
               className="absolute top-1 left-1 z-10 cursor-pointer"
-              onClick={() => addWatchLater(r)}
+              onClick={() => {addWatchLater(r);
+                messageAdded("watchLater")
+              }}
             >
               <FaPlus size={18}/>
             </button>

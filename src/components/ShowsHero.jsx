@@ -6,7 +6,7 @@ import axios from "axios";
 const ShowsHero = () => {
   const [tvShows, setTvShows] = useState({});
   const [readMore, setReadMore] = useState(false);
-  const { addWatchLater } = useContext(PersonalInfo);
+  const { addWatchLater, messageAdded } = useContext(PersonalInfo);
 
   useEffect(() => {
     const fetchingShows = async () => {
@@ -32,7 +32,7 @@ const ShowsHero = () => {
         <img
           src="/public/netflix-logo.png"
           alt=""
-          className=" absolute  mt-4 top-1 left-1  h-6  md:w-8 md:h-8 "
+          className=" absolute  mt-4 top-0 left-1  h-6  md:w-8 md:h-8 "
         />
         <img
           className="w-full h-full object-cover object-top"
@@ -40,7 +40,7 @@ const ShowsHero = () => {
           alt={name}
         />
 
-        <div className="absolute w-[50%] top-[20%] md:top-[35%] lg:top-[40%] p-2">
+        <div className="absolute w-[50%] top-32 md:top-32 lg:top-48 p-2 ">
           <h1 className="text-2xl font-bold mb-5 md:text-3xl">{name}</h1>
           <div className="flex flex-col gap-3">
             <div className="flex gap-4">
@@ -48,8 +48,11 @@ const ShowsHero = () => {
                 play
               </button>
               <button
-                className="px-4 py-1 cursor-pointer border border-white hover:bg-white hover:border-black hover:text-black transition-all duration-300 capitalize"
-                onClick={() => addWatchLater(tvShows)}
+                className="px-4 py-1 cursor-pointer border border-white hover:bg-white hover:border-black hover:text-black transition-all duration-300"
+                onClick={() => {
+                  addWatchLater(tvShows);
+                  messageAdded("watchLater");
+                }}
               >
                 watch later
               </button>
@@ -59,7 +62,7 @@ const ShowsHero = () => {
               <div>
                 <p className={readMore ? "" : "truncate"}>{overview}</p>
                 <button
-                  className="transition-all  hover:underline cursor-pointer mt-1"
+                  className="transition-all  hover:underline cursor-pointer mt-1 hidden md:block"
                   onClick={() => setReadMore(!readMore)}
                 >
                   {!readMore ? "Read More" : "See Less"}

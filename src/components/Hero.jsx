@@ -6,7 +6,7 @@ import { PersonalInfo } from "../context/UserInfo";
 const Hero = () => {
   const [movie, setMovie] = useState({});
   const [readMore, setReadMore] = useState(false);
-  const { addWatchLater } = useContext(PersonalInfo);
+  const { addWatchLater, messageAdded } = useContext(PersonalInfo);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -40,7 +40,7 @@ const Hero = () => {
           src={`https://image.tmdb.org/t/p/original${backdrop_path}`}
           alt={title}
         />
-        <div className="absolute w-[50%] top-[20%] md:top-[30%] lg:top-[35%] p-4 ">
+        <div className="absolute w-[50%] top-32 md:top-32 lg:top-48 p-2 ">
           <h1 className="text-3xl font-bold mb-5 md:text-4xl">{title}</h1>
           <div className=" flex flex-col gap-3">
             <div className="flex gap-4">
@@ -49,7 +49,9 @@ const Hero = () => {
               </button>
               <button
                 className=" cursor-pointer px-3 py-1 border border-white hover:bg-white hover:text-black hover:border-black transition-all duration-300 capitalize"
-                onClick={() => addWatchLater(movie)}
+                onClick={() => {addWatchLater(movie);
+                  messageAdded("watchLater")
+                }}
               >
                 watch later
               </button>

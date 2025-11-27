@@ -95,9 +95,9 @@ const Register = () => {
       {errors &&
         !closeErrors &&
         createPortal(
-          <div className="fixed inset-0 flex justify-center items-center bg-black/60 backdrop-blur-xl">
-            <div className="bg-white/10 w-72 h-52 flex flex-col justify-center items-center gap-4 p-2">
-              <h1 className="text-lg font-bebas tracking-wider text-center text-red-600">
+          <div className="fixed inset-0 flex justify-center items-center bg-black/80 backdrop-blur-xl">
+            <div className="bg-white/15 w-72 h-52 flex flex-col justify-center items-center gap-4 p-2">
+              <h1 className="text-lg font-bebas tracking-wider text-center text-white">
                 {errors}
               </h1>
               <button

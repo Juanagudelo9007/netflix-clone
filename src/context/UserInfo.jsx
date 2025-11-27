@@ -10,10 +10,14 @@ const UserInfo = ({ children }) => {
   const [toggle, setToggle] = useState(false);
   const [later, setLater] = useState([]);
   const [loaded, setLoaded] = useState(false);
-  const { user } = useContext(UserLogin);
-  c;
+  const [favAdded, setFavAdded] = useState(false);
+  const [watchAdded, setWatchAdded] = useState(false);
 
-  /* Loading liked Movies (PERSISTENCE) */
+  const { user } = useContext(UserLogin);
+
+  {
+    /* Loading liked Movies (PERSISTENCE) */
+  }
 
   useEffect(() => {
     if (!user) return;
@@ -31,7 +35,9 @@ const UserInfo = ({ children }) => {
     loadMovies();
   }, [user]);
 
-  /* Liked Movies */
+  {
+    /* Liked Movies */
+  }
   useEffect(() => {
     if (!user || !loaded) return;
 
@@ -47,6 +53,10 @@ const UserInfo = ({ children }) => {
     likeMov();
   }, [user, favorites, loaded]);
 
+  {
+    /* Message added  */
+  }
+
   const addMovies = (movie) => {
     if (!favorites.find((m) => m.id === movie.id)) {
       setFavorites([...favorites, movie]);
@@ -58,7 +68,9 @@ const UserInfo = ({ children }) => {
     setFavorites(favorites.filter((t) => t.id !== id));
   };
 
-  /*  Watch Later */
+  {
+    /*  Watch Later */
+  }
 
   useEffect(() => {
     if (!user || !loaded) return;
@@ -75,7 +87,9 @@ const UserInfo = ({ children }) => {
     addLater();
   }, [user, loaded, later]);
 
-  /* Loading Watch later Section */
+  {
+    /* Loading Watch later Section */
+  }
 
   useEffect(() => {
     if (!user) return;
@@ -103,6 +117,22 @@ const UserInfo = ({ children }) => {
     setLater(later.filter((f) => f.id !== id));
   };
 
+  {
+    /* Overlay message added to...  */
+  }
+  const messageAdded = (type) => {
+    if (type === "favorites") {
+      setFavAdded(true);
+    } else if (type === "watchLater") {
+      setWatchAdded(true);
+    }
+
+    setTimeout(() => {
+      setFavAdded(false);
+      setWatchAdded(false);
+    }, 2000);
+  };
+
   return (
     <PersonalInfo.Provider
       value={{
@@ -116,6 +146,9 @@ const UserInfo = ({ children }) => {
         removeWatchLater,
         toggle,
         setToggle,
+        messageAdded,
+        favAdded,
+        watchAdded,
       }}
     >
       {children}
