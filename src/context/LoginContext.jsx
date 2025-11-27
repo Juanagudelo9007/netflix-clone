@@ -17,6 +17,7 @@ const LoginContext = ({ children }) => {
   const [isRegistered, setIsRegistered] = useState(false);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState([]);
   const auth = getAuth(app);
 
   const handleForm = async (e) => {
@@ -61,7 +62,10 @@ const LoginContext = ({ children }) => {
         console.log("user logged in:", userIn.user);
       }
     } catch (error) {
-      console.log("error while trying to register");
+      const message = errorsFirebase(error.code)
+      console.log("error while trying to register",error);
+      setErrors(message);
+      setLoading(false)
     }
   };
 
@@ -83,10 +87,24 @@ const LoginContext = ({ children }) => {
     try {
       await signOut(auth);
       setLoading(false);
-    } catch (error) {
-      console.log("Error while closing sesion", error);
+    } catch (err) {
+      console.log("Error while closing sesion", err);
     }
   };
+
+   {
+     /* Errors */
+   }
+
+   const errorsFirebase = (code) => {
+     switch (code) {
+       case "auth/email-already-in-use":
+         return "Email already use";
+        
+       default:
+         return "An error happened, please try again";
+     }
+   };
   return (
     <UserLogin.Provider
       value={{
@@ -97,6 +115,8 @@ const LoginContext = ({ children }) => {
         handleForm,
         logOut,
         loading,
+        errors,
+        
       }}
     >
       {children}

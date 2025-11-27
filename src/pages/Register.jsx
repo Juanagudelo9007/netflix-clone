@@ -1,9 +1,8 @@
 import { useContext } from "react";
 import { UserLogin } from "../context/LoginContext";
-import { createPortal } from "react-dom";
 
 const Register = () => {
-  const { handleForm, isRegistered, setIsRegistered, loading } =
+  const { handleForm, isRegistered, setIsRegistered, loading, errors } =
     useContext(UserLogin);
 
   return (
@@ -71,12 +70,21 @@ const Register = () => {
             : "don't have an account?"}
         </button>
       </form>
+
+      {/* Loading overlay */}
+
       {loading && (
         <div className="flex flex-col gap-11 justify-center items-center fixed inset-0 bg-black">
-          <div className="h-12 w-12 border-4 border-red-600 border-t-transparent rounded-full animate-spin"></div>
-          <h1 className="text-xl font-bebas tracking-wider">Loading...</h1>
+          <div className="h-14 w-14 border-8 border-red-600 border-t-transparent rounded-full animate-spin"></div>
+          <h1 className="text-xl font-bebas tracking-wider capitalize">
+            Loading...
+          </h1>
         </div>
       )}
+
+      {/* Error Message */}
+      {console.log(errors)}
+      {errors && <div className="text-2xl  text-red-600 z-2">{errors}</div>}
     </div>
   );
 };
