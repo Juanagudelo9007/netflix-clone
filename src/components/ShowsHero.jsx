@@ -32,7 +32,7 @@ const ShowsHero = () => {
         <img
           src="/public/netflix-logo.png"
           alt=""
-          className=" absolute  mt-4 top-[76px] left-1  h-6  md:w-8 md:h-8 "
+          className=" absolute  mt-4 top-1 left-1  h-6  md:w-8 md:h-8 "
         />
         <img
           className="w-full h-full object-cover object-top"
@@ -44,11 +44,11 @@ const ShowsHero = () => {
           <h1 className="text-2xl font-bold mb-5 md:text-3xl">{name}</h1>
           <div className="flex flex-col gap-3">
             <div className="flex gap-4">
-              <button className="bg-white text-black px-4  cursor-pointer">
+              <button className="border bg-white text-black px-4  cursor-not-allowed hover:bg-black hover:border-white hover:text-white transition-all duration-300 capitalize">
                 play
               </button>
               <button
-                className="px-4 py-1 cursor-pointer border border-white"
+                className="px-4 py-1 cursor-pointer border border-white hover:bg-white hover:border-black hover:text-black transition-all duration-300 capitalize"
                 onClick={() => addWatchLater(tvShows)}
               >
                 watch later

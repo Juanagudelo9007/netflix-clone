@@ -18,7 +18,7 @@ const LoginContext = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState("");
-  const [closeErrors, setCloseErrors] = useState(false); 
+  const [closeErrors, setCloseErrors] = useState(false);
   const auth = getAuth(app);
 
   {
@@ -84,6 +84,7 @@ const LoginContext = ({ children }) => {
         console.log("user logged in:", userIn.user);
       }
     } catch (error) {
+      console.log("firebase error code", error);
       const message = errorsFirebase(error.code);
       console.log("error while trying to register", error);
       setErrors(message);
@@ -122,7 +123,8 @@ const LoginContext = ({ children }) => {
     switch (code) {
       case "auth/email-already-in-use":
         return "Email already use";
-
+      case "auth/invalid-credential":
+        return "incorrect password";
       default:
         return "An error happened, please try again";
     }

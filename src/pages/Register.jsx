@@ -62,14 +62,14 @@ const Register = () => {
           />
         </label>
         <button
-          className="w-46 bg-red-600 py-0.5 font-extrabold tracking-wide cursor-pointer"
+          className="w-46 bg-red-600 py-0.5 font-extrabold tracking-wide cursor-pointer active:scale-[0.7] transition-all duration-300 hover:bg-red-800"
           type="submit"
         >
           {!isRegistered ? "sign up" : "Login"}
         </button>
 
         <button
-          className="underline font-bold md:no-underline md:hover:underline cursor-pointer capitalize"
+          className="underline font-bold md:no-underline md:hover:underline cursor-pointer capitalize "
           type="button"
           onClick={() => setIsRegistered(!isRegistered)}
         >
@@ -81,7 +81,7 @@ const Register = () => {
 
       {/* Loading overlay */}
 
-      {loading &&  (
+      {loading && (
         <div className="flex flex-col gap-11 justify-center items-center fixed inset-0 bg-black">
           <div className="h-14 w-14 border-8 border-red-600 border-t-transparent rounded-full animate-spin"></div>
           <h1 className="text-xl font-bebas tracking-wider capitalize">
@@ -92,15 +92,17 @@ const Register = () => {
 
       {/* Error Message */}
       {console.log(errors)}
-      {errors && !closeErrors &&
+      {errors &&
+        !closeErrors &&
         createPortal(
           <div className="fixed inset-0 flex justify-center items-center bg-black/60 backdrop-blur-xl">
             <div className="bg-white/10 w-72 h-52 flex flex-col justify-center items-center gap-4 p-2">
               <h1 className="text-lg font-bebas tracking-wider text-center text-red-600">
                 {errors}
               </h1>
-              <button className="bg-red-600 px-6 py-1 font-bebas tracking-wider rounded-sm"
-              onClick={()=> setCloseErrors(!closeErrors)}
+              <button
+                className="bg-red-600 px-6 py-1 font-bebas tracking-wider rounded-sm active:scale-[0.7] transition-all duration-300 hover:bg-red-800"
+                onClick={() => setCloseErrors(!closeErrors)}
               >
                 ok
               </button>

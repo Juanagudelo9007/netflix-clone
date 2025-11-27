@@ -23,7 +23,7 @@ const Navbar = () => {
               alt=""
               className="h-8 w-8 md:h-10 md:w-10 cursor-pointer"
             />
-            <button className="cursor-pointer" onClick={() => setOpen(!open)}>
+            <button className="cursor-pointer active:scale-[0.6] transition-all duration-300" onClick={() => setOpen(!open)}>
               <MdArrowDropDown size={30} />
             </button>
           </div>
@@ -37,19 +37,19 @@ const Navbar = () => {
                     alt=""
                     className="h-4 w-4 md:h-6 md:w-6 "
                   />
-                  <h1 className="text-[10px] font-bebas tracking-wider md:text-[13px]">
+                  <h1 className="text-[10px] font-bebas tracking-wider md:text-[13px] capitalize">
                     {user.displayName}
                   </h1>
 
                   <button
-                    className="absolute top-0 right-0 cursor-pointer "
+                    className="absolute top-0 right-0 cursor-pointer active:scale-[0.6] transition-all duration-300 "
                     onClick={() => setOpen(!open)}
                   >
                     <CgClose size={14} />
                   </button>
                 </div>
                 <div className="flex items-center gap-2 p-1 hover:bg-white/70 hover:text-black transition-all duration-300">
-                  <button className="cursor-pointer" onClick={logOut}>
+                  <button className="cursor-pointer active:scale-[0.6] transition-all duration-300" onClick={logOut}>
                     <IoIosLogOut size={15} />
                   </button>
                   <h1 className="text-[10px] font-bebas tracking-wider md:text-[13px]">

@@ -44,14 +44,14 @@ const Hero = () => {
           <h1 className="text-3xl font-bold mb-5 md:text-4xl">{title}</h1>
           <div className=" flex flex-col gap-3">
             <div className="flex gap-4">
-              <button className="cursor-pointer px-4 bg-white  py-1 text-black">
-                Play
+              <button className="cursor-not-allowed px-4 border bg-white  py-1 text-black hover:bg-black hover:text-white hover:border hover:border-white transition-all duration-300 capitalize">
+                play
               </button>
               <button
-                className=" cursor-pointer px-3 py-1 border border-white"
+                className=" cursor-pointer px-3 py-1 border border-white hover:bg-white hover:text-black hover:border-black transition-all duration-300 capitalize"
                 onClick={() => addWatchLater(movie)}
               >
-                Watch Later
+                watch later
               </button>
             </div>
             <div className="flex flex-col gap-2">
