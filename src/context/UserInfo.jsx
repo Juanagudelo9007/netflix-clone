@@ -130,7 +130,7 @@ const UserInfo = ({ children }) => {
     setTimeout(() => {
       setFavAdded(false);
       setWatchAdded(false);
-    }, 2000);
+    }, 10000);
   };
 
   return (
