@@ -12,16 +12,18 @@ const MovieCard = ({ movie }) => {
       <div className=" inline-block relative sm:w-[200px] md:w-60  lg:w-[280px]  overflow-hidden m-1 cursor-pointer">
         <button
           className="absolute top-1 right-1 z-10 cursor-pointer md:hidden text-white"
-          onClick={() => {addMovies(movie);
-            messageAdded("favorites")
+          onClick={() => {
+            addMovies(movie);
+            messageAdded("favorites");
           }}
         >
           <FcLikePlaceholder size={18} />
         </button>
         <button
           className="absolute top-1 left-1 z-10 cursor-pointer md:hidden"
-          onClick={() => {addWatchLater(movie);
-            messageAdded("watchLater")
+          onClick={() => {
+            addWatchLater(movie);
+            messageAdded("watchLater");
           }}
         >
           <FaPlus size={18} />
@@ -40,19 +42,21 @@ const MovieCard = ({ movie }) => {
         <div className="flex absolute inset-0 bg-black/60 backdrop-blur-md  items-center justify-center opacity-0 hover:opacity-100 transition-all duration-300 rounded-md">
           <button
             className="absolute top-1 right-1 z-10 cursor-pointer"
-            onClick={() => {addMovies(movie);
-              messageAdded("favorites")
+            onClick={() => {
+              addMovies(movie);
+              messageAdded("favorites");
             }}
           >
             <FcLikePlaceholder size={18} />
           </button>
           <button
             className="absolute top-1 left-1 z-10 cursor-pointer"
-            onClick={() => {addWatchLater(movie);
-              messageAdded("watchLater")
+            onClick={() => {
+              addWatchLater(movie);
+              messageAdded("watchLater");
             }}
           >
-            <FaPlus size={18}/>
+            <FaPlus size={18} />
           </button>
           <h1 className="font-bebas tracking-wider">{title}</h1>
         </div>

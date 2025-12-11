@@ -8,7 +8,8 @@ import { FaPlus } from "react-icons/fa6";
 
 const DefaultShows = () => {
   const [shows, setShows] = useState([]);
-  const { addWatchLater, addMovies, watchAdded } = useContext(PersonalInfo);
+  const { addWatchLater, addMovies, watchAdded, messageAdded } =
+    useContext(PersonalInfo);
 
   useEffect(() => {
     const showsDefault = async () => {
@@ -39,7 +40,7 @@ const DefaultShows = () => {
             className="absolute top-1 right-1 z-10 cursor-pointer md:hidden"
             onClick={() => {
               addMovies(t);
-              watchAdded("favorites");
+              messageAdded("favorites");
             }}
           >
             <FcLikePlaceholder size={18} />
@@ -48,7 +49,7 @@ const DefaultShows = () => {
             className="absolute top-1 left-1 z-10 cursor-pointer md:hidden"
             onClick={() => {
               addWatchLater(t);
-              watchAdded("watchLater");
+              messageAdded("watchLater");
             }}
           >
             <FaPlus size={18} />
@@ -67,7 +68,7 @@ const DefaultShows = () => {
               className="absolute top-1 right-1 z-10 cursor-pointer"
               onClick={() => {
                 addMovies(t);
-                watchAdded("favorites");
+                messageAdded("favorites");
               }}
             >
               <FcLikePlaceholder size={18} />
@@ -76,7 +77,7 @@ const DefaultShows = () => {
               className="absolute top-1 left-1 z-10 cursor-pointer"
               onClick={() => {
                 addWatchLater(t);
-                watchAdded("watchLater");
+                messageAdded("watchLater");
               }}
             >
               <FaPlus size={18} />
