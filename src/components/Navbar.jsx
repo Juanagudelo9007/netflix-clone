@@ -19,7 +19,7 @@ const Navbar = () => {
         <div>
           <div className="flex items-center cursor-pointer">
             <img
-              src={"/public/netflix-profile.jpg"}
+              src={"/netflix-profile.jpg"}
               alt=""
               className="h-8 w-8 md:h-10 md:w-10 cursor-pointer"
             />
@@ -33,7 +33,7 @@ const Navbar = () => {
               <div className="flex flex-col gap-2">
                 <div className="relative flex items-center gap-2 p-1 hover:bg-white/70 hover:text-black transition-all duration-300">
                   <img
-                    src={"/public/netflix-profile.jpg"}
+                    src={"/netflix-profile.jpg"}
                     alt=""
                     className="h-4 w-4 md:h-6 md:w-6 "
                   />
