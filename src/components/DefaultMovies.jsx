@@ -32,12 +32,9 @@ const DefaultMovies = () => {
     );
 
   return (
-    <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 group items-center p-2">
+    <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 group items-center p-2">
       {main.map((r) => (
-        <div
-          key={r.id}
-          className="relative  md:w-[310px] lg:w-[315px] rounded-sm"
-        >
+        <div key={r.id} className="relative rounded-sm">
           <button
             className="absolute top-1 right-1 z-10 cursor-pointer md:hidden"
             onClick={() => {

@@ -32,12 +32,9 @@ const DefaultShows = () => {
     );
 
   return (
-    <div className="relative grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 group gap-4 lg:gap-2 items-center p-2 ">
+    <div className="relative grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 group gap-2 items-center p-2 ">
       {shows.map((t) => (
-        <div
-          className="relative  md:w-[310px] lg:w-[315px] rounded-sm "
-          key={t.id}
-        >
+        <div className="relative rounded-sm " key={t.id}>
           <button
             className="absolute top-1 right-1 z-10 cursor-pointer md:hidden"
             onClick={() => {
