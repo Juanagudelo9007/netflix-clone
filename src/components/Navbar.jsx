@@ -83,7 +83,7 @@ const Navbar = () => {
         </div>
 
         <img
-          src={"/public/netflix-logo.png"}
+          src={"/netflix-logo.png"}
           alt=""
           className="h-8 w-8 md:h-11 md:w-11"
         />
