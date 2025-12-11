@@ -1,4 +1,4 @@
-import React, { useState,  } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { UserLogin } from "../context/LoginContext";
@@ -9,9 +9,6 @@ import { CgClose } from "react-icons/cg";
 const Navbar = () => {
   const { logOut, user } = useContext(UserLogin);
   const [open, setOpen] = useState(false);
- 
-
- ;
 
   return (
     <>
@@ -23,7 +20,10 @@ const Navbar = () => {
               alt=""
               className="h-8 w-8 md:h-10 md:w-10 cursor-pointer"
             />
-            <button className="cursor-pointer active:scale-[0.6] transition-all duration-300" onClick={() => setOpen(!open)}>
+            <button
+              className="cursor-pointer active:scale-[0.6] transition-all duration-300"
+              onClick={() => setOpen(!open)}
+            >
               <MdArrowDropDown size={30} />
             </button>
           </div>
@@ -49,7 +49,10 @@ const Navbar = () => {
                   </button>
                 </div>
                 <div className="flex items-center gap-2 p-1 hover:bg-white/70 hover:text-black transition-all duration-300">
-                  <button className="cursor-pointer active:scale-[0.6] transition-all duration-300" onClick={logOut}>
+                  <button
+                    className="cursor-pointer active:scale-[0.6] transition-all duration-300"
+                    onClick={logOut}
+                  >
                     <IoIosLogOut size={15} />
                   </button>
                   <h1 className="text-[10px] font-bebas tracking-wider md:text-[13px]">
@@ -64,19 +67,19 @@ const Navbar = () => {
         <div className="flex gap-4 md:gap-8">
           <Link
             to={"/home"}
-            className="font-bebas  tracking-wider bg-white text-black px-2 py-1 rounded-xl  md:bg-transparent md:text-white md:hover:bg-white md:hover:text-black md:hover:rounded-xl transition-all duration-500"
+            className="font-bebas tracking-wide  px-2 py-1  md:text-white hover:text-red-600 hover:rounded-xl transition-all duration-500 hover:scale-75"
           >
             Home
           </Link>
           <Link
             to={"/shows"}
-            className="font-bebas tracking-wider bg-white text-black px-2 py-1 rounded-xl  md:bg-transparent md:text-white md:hover:bg-white md:hover:text-black md:hover:rounded-xl transition-all duration-500"
+            className="font-bebas tracking-wide  px-2 py-1  md:text-white hover:text-red-600 hover:rounded-xl transition-all duration-500 hover:scale-75"
           >
             Shows
           </Link>
           <Link
             to={"/mynetflix"}
-            className="font-bebas tracking-wider bg-white text-black px-2 py-1 rounded-xl  md:bg-transparent md:text-white md:hover:bg-white md:hover:text-black md:hover:rounded-xl transition-all duration-500"
+            className="font-bebas tracking-wide  px-2 py-1  md:text-white hover:text-red-600 hover:rounded-xl transition-all duration-500 hover:scale-75"
           >
             MyNetflix
           </Link>
