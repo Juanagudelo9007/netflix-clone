@@ -20,7 +20,7 @@ const Register = () => {
         Netflix
       </h1>
       <img
-        src="/public/netflix-logo.png"
+        src="/netflix-logo.png"
         alt=""
         className=" absolute   top-2 right-2  h-12  md:w-14 md:h-14 "
       />
