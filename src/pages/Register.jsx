@@ -29,7 +29,7 @@ const Register = () => {
         className="relative bg-black/80 flex flex-col items-center justify-center w-[300px] h-[350px]  gap-4"
         onSubmit={handleForm}
       >
-        <h1 className="absolute top-10 left-15 font-extrabold tracking-wide capitalize">
+        <h1 className="text-start font-extrabold tracking-wide capitalize">
           {!isRegistered ? "sign up" : "Login"}
         </h1>
         {!isRegistered && (
@@ -62,7 +62,7 @@ const Register = () => {
           />
         </label>
         <button
-          className="w-46 bg-red-600 py-0.5 font-extrabold tracking-wide cursor-pointer active:scale-[0.7] transition-all duration-300 hover:bg-red-800"
+          className="w-36 bg-red-600 py-0.5 font-extrabold tracking-wide cursor-pointer active:scale-[0.7] transition-all duration-300 hover:bg-red-800"
           type="submit"
         >
           {!isRegistered ? "sign up" : "Login"}
