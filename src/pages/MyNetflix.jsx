@@ -23,7 +23,7 @@ const MyNetflix = () => {
     <div className="w-full h-full">
       <div className="w-full h-[180px] md:h-[270px]">
         <img
-          src="/public/netflix-bg-option3.jpg"
+          src="/netflix-bg-option3.jpg"
           alt=""
           className="h-full w-full object-cover"
         />

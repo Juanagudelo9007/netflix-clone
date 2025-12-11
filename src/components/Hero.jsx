@@ -31,7 +31,7 @@ const Hero = () => {
       <div className="h-full w-full ">
         <div className="absolute w-full h-[500px] lg:h-[600px] bg-linear-to-r from-black" />
         <img
-          src="/public/netflix-logo.png"
+          src="/netflix-logo.png"
           alt=""
           className=" absolute   top-3 left-1  h-6  z-20 md:w-8 md:h-8 "
         />
@@ -49,8 +49,9 @@ const Hero = () => {
               </button>
               <button
                 className=" cursor-pointer px-3 py-1 border border-white hover:bg-white hover:text-black hover:border-black transition-all duration-300 capitalize"
-                onClick={() => {addWatchLater(movie);
-                  messageAdded("watchLater")
+                onClick={() => {
+                  addWatchLater(movie);
+                  messageAdded("watchLater");
                 }}
               >
                 watch later

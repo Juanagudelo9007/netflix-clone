@@ -30,7 +30,7 @@ const ShowsHero = () => {
       <div className="h-full w-full">
         <div className="absolute w-full h-[500px] lg:h-[600px] bg-linear-to-r from-black" />
         <img
-          src="/public/netflix-logo.png"
+          src="/netflix-logo.png"
           alt=""
           className=" absolute  mt-4 top-0 left-1  h-6  md:w-8 md:h-8 "
         />
