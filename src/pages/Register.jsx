@@ -14,7 +14,7 @@ const Register = () => {
   } = useContext(UserLogin);
 
   return (
-    <div className="relative flex justify-center items-center w-full h-screen bg-[url('/netflix-bg.jpg')]">
+    <div className="relative flex justify-center items-center w-full h-screen bg-[url('/netflix-bg.jpg')] font-sans">
       <div className="fixed inset-0 bg-black/60" />
       <h1 className="absolute top-2 left-5 text-4xl md:text-5xl font-bebas text-red-600">
         Netflix
@@ -26,7 +26,7 @@ const Register = () => {
       />
       <form
         action=""
-        className="relative bg-black/80 flex flex-col items-center justify-center w-[300px] h-[350px]  gap-4"
+        className="relative bg-black/80 flex flex-col items-center justify-center w-[300px] h-[350px]  gap-4 font-sans"
         onSubmit={handleForm}
       >
         <h1 className="text-start font-extrabold tracking-wide capitalize">
@@ -62,7 +62,7 @@ const Register = () => {
           />
         </label>
         <button
-          className="w-36 bg-red-600 py-0.5 font-extrabold tracking-wide cursor-pointer active:scale-[0.7] transition-all duration-300 hover:bg-red-800"
+          className="w-46 bg-red-600 py-0.5 font-extrabold tracking-wide cursor-pointer active:scale-[0.7] transition-all duration-300 hover:bg-red-800"
           type="submit"
         >
           {!isRegistered ? "sign up" : "Login"}
