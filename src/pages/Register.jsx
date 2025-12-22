@@ -62,7 +62,7 @@ const Register = () => {
           />
         </label>
         <button
-          className="w-46 bg-red-600 py-0.5 font-extrabold tracking-wide cursor-pointer active:scale-[0.7] transition-all duration-300 hover:bg-red-800"
+          className="px-[62px] bg-red-600 py-0.5 font-extrabold tracking-wide cursor-pointer active:scale-[0.7] transition-all duration-300 hover:bg-red-800"
           type="submit"
         >
           {!isRegistered ? "sign up" : "Login"}
