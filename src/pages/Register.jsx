@@ -14,7 +14,7 @@ const Register = () => {
   } = useContext(UserLogin);
 
   return (
-    <div className="relative flex justify-center items-center w-full h-screen bg-[url('/netflix-bg.jpg')] font-sans">
+    <div className="relative flex justify-center items-center w-full h-screen bg-[url('/netflix-bg.jpg')] ">
       <div className="fixed inset-0 bg-black/60" />
       <h1 className="absolute top-2 left-5 text-4xl md:text-5xl font-bebas text-red-600">
         Netflix
